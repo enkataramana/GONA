@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI WEBSITE</title>
+    <link rel="stylesheet" href="bmi.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin-left:500px;
+            margin-right:200px;
+            margin-bottom:50px;
+            margin-top:50px;
+            width: 50%;
+            height: 50%;
+            align-items: fixed;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 60%;
+            height: 80vh;
+            border: 100%;
+            margin-inline: 20px;
+            text-align: center;
+        }
+
+        .menu-icon {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: #26e92d;
+            margin: 6px auto;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .menu-icon.active {
+            background-color: transparent;
+            transform: rotate(45deg);
+        }
+
+        .menu-icon.active::before,
+        .menu-icon.active::after {
+            top: 0;
+            transform: rotate(90deg);
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background-color: orange;
+            transition: transform 0.3s;
+        }
+
+        .menu-icon::before {
+            top: 1px;
+        }
+
+        .menu-icon::after {
+            top: 1px;
+        }
+
+        .menu-toggle {
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        .menu-name {
+            margin-left: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: rgb(202, 12, 18);
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: rgb(27, 43, 48);
+            transition: left 0.3s;
+            z-index: 998;
+        }
+
+        .menu.active {
+            left: 0;
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 50px 0;
+        }
+
+        .menu ul li {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .menu ul li a {
+            color: greenyellow;
+            text-decoration: none;
+        }
+
+        .gender-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gender-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .gender-label input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .gender-label input[type="checkbox"] + label {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BMI CALCULATOR</h1>
+        <label for="">ENTER YOUR NAME</label>
+        <input type="text" id="name" class="name" name="name"><br>
+        <label for="">ENTER YOUR AGE</label>
+        <input type="number" id="age" name="age" class="age">
+        <div class="gender-container">
+            <div class="gender-label">
+                <label for="">GENDER</label>
+            </div>
+            <input type="checkbox" name="male" id="male">
+            <label for="male">MALE</label>
+            <input type="checkbox" name="female" id="female">
+            <label for="female">FEMALE</label>
+        </div>
+        <label for="">ENTER YOUR HEIGHT</label>
+        <input type="text" id="height" /><br>
+
+        <label for="">ENTER YOUR WEIGHT</label>
+        <input type="text" id="weight" /><br>
+        <button id="btn">ENTER</button>
+        <div id="result"></div>
+        <div id="links"></div>
+    
+
+    
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <div class="menu-icon"></div>
+        <div class="menu-name">dashboard</div>
+    </div>
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="basic.html">basic details</a></li>
+            <li><a href="table.html">table</a></li>
+            <li><a href="uw.html">under weight</a></li>
+            <li><a href="ow.html">over weight</a></li>
+            <li><a href="nrml.html">healthy weight</a></li>
+            
+            <li><a href="bmi login.html">Login</a></li>
+            <li><a href="bmi signup.html">Signup</a></li>
+            <li><button onclick="closeMenu()">Close Menu</button></li>
+        </ul>
+    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const menuIcon = document.querySelector('.menu-icon');
+
+            menu.classList.toggle('active');
+            menuIcon.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const menu = document.getElementById('menu');
+            const menuIcon = document.querySelector('.menu-icon');
+
+            menu.classList.remove('active');
+            menuIcon.classList.remove('active');
+        }
+    </script>
+</body>
+<script src="bmi2.js"></script>
+</html>
